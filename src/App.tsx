@@ -19,7 +19,7 @@ function App() {
 
   console.log(answer);
 
-  return <div className="App">hi</div>;
+  return <div className="App">hi hi</div>;
 }
 
 export default App;
