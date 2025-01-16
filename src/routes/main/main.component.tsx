@@ -8,53 +8,40 @@ import "./main.style.scss";
 const API_KEY = process.env.REACT_APP_MAPLE_KEY;
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
+const fetchRanking = async <T,>(
+  endpoint: string,
+  setData: (data: T[]) => void
+) => {
+  try {
+    const response = await fetch(endpoint, {
+      headers: {
+        "x-nxopen-api-key": API_KEY || "",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`error: ${response.status}`);
+    }
+
+    const data = await response.json();
+    setData(data.ranking);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const Main: FC = () => {
   const todayDate = getTodayDate();
-  const urlString = `${BASE_URL}/ranking/overall?date=${todayDate}&page=1`;
   const [overallRanking, setOverallRanking] = useState<OverallRanking[]>([]);
   const [unionRanking, setUnionRanking] = useState<UnionRanking[]>([]);
 
+  const overallUrl = `${BASE_URL}/ranking/overall?date=${todayDate}&page=1`;
+  const unionUrl = `${BASE_URL}/ranking/union?date=${todayDate}&page=1`;
+
   useEffect(() => {
-    const overallFetch = async () => {
-      try {
-        const response = await fetch(urlString, {
-          headers: {
-            "x-nxopen-api-key": API_KEY || "",
-          },
-        });
-        if (!response.ok) {
-          throw new Error(`error: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setOverallRanking(data.ranking);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    const unionFetch = async () => {
-      try {
-        const response = await fetch(urlString, {
-          headers: {
-            "x-nxopen-api-key": API_KEY || "",
-          },
-        });
-        if (!response.ok) {
-          throw new Error(`error: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setUnionRanking(data.ranking);
-        console.log(data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    overallFetch();
-    unionFetch();
-  }, [urlString]);
+    fetchRanking<OverallRanking>(overallUrl, setOverallRanking);
+    fetchRanking<UnionRanking>(unionUrl, setUnionRanking);
+  }, [overallUrl, unionUrl]);
 
   return (
     <section id="main">
