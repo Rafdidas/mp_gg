@@ -10,7 +10,6 @@ const GuildItem = ({ rank }: { rank: GuildRanking }) => {
       <p>{rank.guild_level}</p>
       <p>{rank.guild_mark}</p>
       <p>{rank.guild_point}</p>
-      <p>{rank.ranking}</p>
       <p>{rank.guild_master_name}</p>
     </div>
   );

@@ -7,7 +7,6 @@ interface GuildProps {
 }
 
 const Guild: FC<GuildProps> = ({ guildRanking }) => {
-  console.log(guildRanking);
   return (
     <div>
       <h2>길드 랭킹</h2>

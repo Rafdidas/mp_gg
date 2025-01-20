@@ -1,4 +1,3 @@
-import React from "react";
 import { UnionRanking } from "../../types/ranking.types";
 
 const UnionItem = ({ rank }: { rank: UnionRanking }) => {
