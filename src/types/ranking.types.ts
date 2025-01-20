@@ -22,6 +22,16 @@ export interface UnionRanking {
   union_power: number;
 }
 
+export interface GuildRanking {
+  date: string;
+  world_name: string;
+  guild_name: string;
+  guild_level: number;
+  guild_mark: "";
+  guild_point: number;
+  ranking: number;
+  guild_master_name: string;
+}
 export interface DojangRanking {
   date: string;
   ranking: number;
