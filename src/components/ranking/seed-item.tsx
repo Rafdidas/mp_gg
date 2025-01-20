@@ -1,7 +1,7 @@
 import React from "react";
-import { OverallRanking } from "../../types/ranking.types";
+import { SeedRanking } from "../../types/ranking.types";
 
-const OverallItem = ({ rank }: { rank: OverallRanking }) => {
+const SeedItem = ({ rank }: { rank: SeedRanking }) => {
   return (
     <div>
       <p>{rank.ranking}</p>
@@ -10,11 +10,10 @@ const OverallItem = ({ rank }: { rank: OverallRanking }) => {
       <p>{rank.class_name}</p>
       <p>{rank.sub_class_name}</p>
       <p>{rank.character_level}</p>
-      <p>{rank.character_exp}</p>
-      <p>{rank.character_popularity}</p>
-      <p>{rank.character_guildname}</p>
+      <p>{rank.theseed_floor}</p>
+      <p>{rank.theseed_time_record}</p>
     </div>
   );
 };
 
-export default OverallItem;
+export default SeedItem;
