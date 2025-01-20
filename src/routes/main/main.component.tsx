@@ -1,5 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { getTodayDate } from "../../utils/getTodayDate.utils";
+import { getfetchRanking } from "../../utils/getFetchRanking.utils";
+import { getFetchBoard } from "../../utils/getFetchBoard.utils";
 import {
   ArchievementRanking,
   DojangRanking,
@@ -19,31 +21,7 @@ import UpdateList from "../../components/board/updateList";
 import RankCharacter from "../../components/rank_character/rank_character.component";
 import "./main.style.scss";
 
-const API_KEY = process.env.REACT_APP_MAPLE_KEY;
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-
-const fetchRanking = async <T,>(
-  endpoint: string,
-  setData: (data: T[]) => void
-) => {
-  try {
-    const response = await fetch(endpoint, {
-      headers: {
-        "x-nxopen-api-key": API_KEY || "",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`error: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log(data);
-    setData(data.ranking);
-  } catch (error) {
-    console.error(error);
-  }
-};
 
 const Main: FC = () => {
   const todayDate = getTodayDate();
@@ -66,13 +44,16 @@ const Main: FC = () => {
   const updateUrl = `${BASE_URL}/notice-update`;
 
   useEffect(() => {
-    fetchRanking<OverallRanking>(overallUrl, setOverallRanking);
-    fetchRanking<UnionRanking>(unionUrl, setUnionRanking);
-    fetchRanking<GuildRanking>(guildUrl, setGuildRanking);
-    fetchRanking<DojangRanking>(dojangUrl, setDojangRanking);
-    fetchRanking<SeedRanking>(seedUrl, setSeedRanking);
-    fetchRanking<ArchievementRanking>(archievementUrl, setArchievementRanking);
-    fetchRanking<Update>(updateUrl, setUpdateList);
+    getfetchRanking<OverallRanking>(overallUrl, setOverallRanking);
+    getfetchRanking<UnionRanking>(unionUrl, setUnionRanking);
+    getfetchRanking<GuildRanking>(guildUrl, setGuildRanking);
+    getfetchRanking<DojangRanking>(dojangUrl, setDojangRanking);
+    getfetchRanking<SeedRanking>(seedUrl, setSeedRanking);
+    getfetchRanking<ArchievementRanking>(
+      archievementUrl,
+      setArchievementRanking
+    );
+    getFetchBoard<Update>(updateUrl, setUpdateList);
   }, [
     overallUrl,
     unionUrl,
@@ -82,9 +63,6 @@ const Main: FC = () => {
     archievementUrl,
     updateUrl,
   ]);
-
-  console.log(overallUrl);
-  console.log(overallRanking);
 
   return (
     <section id="main">
