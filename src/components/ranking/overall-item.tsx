@@ -1,17 +1,5 @@
 import React from "react";
-
-interface OverallRanking {
-  date: string;
-  ranking: number;
-  character_name: string;
-  world_name: string;
-  class_name: string;
-  sub_class_name: string;
-  character_level: number;
-  character_exp: number;
-  character_popularity: number;
-  character_guildname: string;
-}
+import { OverallRanking } from "../../types/ranking.types";
 
 const OverallItem = ({ rank }: { rank: OverallRanking }) => {
   return (
