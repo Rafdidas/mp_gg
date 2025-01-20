@@ -15,8 +15,9 @@ import Dojang from "../../components/ranking/dojang";
 import Seed from "../../components/ranking/seed";
 import Archievement from "../../components/ranking/archievement";
 import Guild from "../../components/ranking/guild";
-import "./main.style.scss";
 import UpdateList from "../../components/board/updateList";
+import RankCharacter from "../../components/rank_character/rank_character.component";
+import "./main.style.scss";
 
 const API_KEY = process.env.REACT_APP_MAPLE_KEY;
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -82,9 +83,13 @@ const Main: FC = () => {
     updateUrl,
   ]);
 
+  console.log(overallUrl);
+  console.log(overallRanking);
+
   return (
     <section id="main">
       <h1>Main</h1>
+      <RankCharacter />
       <ul>
         <li>
           <Overall overallRanking={overallRanking} />
