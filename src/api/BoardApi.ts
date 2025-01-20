@@ -1,0 +1,15 @@
+import { Update } from "../types/board.types";
+
+const API_KEY = process.env.REACT_APP_MAPLE_KEY;
+
+// 업데이트 목록 조회
+export const fetchUpdateData = async (url: string): Promise<Update[]> => {
+  const response = await fetch(url, {
+    headers: {
+      "x-nxopen-api-key": API_KEY || "",
+    },
+  });
+  if (!response.ok) throw new Error(`Error: ${response.status}`);
+  const data = await response.json();
+  return data.update_notice;
+};
