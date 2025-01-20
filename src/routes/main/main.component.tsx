@@ -15,6 +15,7 @@ import Seed from "../../components/ranking/seed";
 import Archievement from "../../components/ranking/archievement";
 import Guild from "../../components/ranking/guild";
 import "./main.style.scss";
+import RankCharacter from "../../components/rank_character/rank_character.component";
 
 const API_KEY = process.env.REACT_APP_MAPLE_KEY;
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -68,9 +69,13 @@ const Main: FC = () => {
     fetchRanking<ArchievementRanking>(archievementUrl, setArchievementRanking);
   }, [overallUrl, unionUrl, guildUrl, dojangUrl, seedUrl, archievementUrl]);
 
+  console.log(overallUrl);
+  console.log(overallRanking);
+
   return (
     <section id="main">
       <h1>Main</h1>
+      <RankCharacter />
       <ul>
         <li>
           <Overall overallRanking={overallRanking} />
