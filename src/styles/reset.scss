@@ -1,7 +1,9 @@
+@import "mixins";
+@import "common";
+
 /*-----------------------------------------------------------------*/
 /* 1. Reset
 /*-----------------------------------------------------------------*/
-
 html,
 body,
 div,
@@ -88,7 +90,10 @@ video {
   border: 0;
   outline: 0;
   color: #333;
-  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-family: "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   font-size: 12px;
   line-height: 1.6;
   vertical-align: baseline;
@@ -130,7 +135,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -143,14 +148,14 @@ img {
   vertical-align: top;
 }
 
-input[type=radio],
-input[type=checkbox] {
+input[type="radio"],
+input[type="checkbox"] {
   vertical-align: middle;
 }
 
-input[type=text],
-input[type=email],
-input[type=password] {
+input[type="text"],
+input[type="email"],
+input[type="password"] {
   vertical-align: top;
 }
 
@@ -178,61 +183,4 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-// layout
-#wrapper {
-  position: relative;
-  text-align: left;
-}
-
-.wrap_inner,
-.wrap_inner2 {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.wrap_inner3 {
-  width: 100%;
-  max-width: 1816px;
-  margin: 0 auto;
-}
-
-@media all and (max-width:1816px) {
-  .wrap_inner3 {
-    padding: 0 2.8645%;
-  }
-}
-
-@media all and (max-width:1200px) {
-
-  .wrap_inner,
-  .wrap_inner2 {
-    padding: 0 3.16%;
-  }
-}
-
-@media all and (max-width:1024px) {
-  .wrap_inner {
-    padding: 0 3.16% 3.16%;
-  }
-
-  .wrap_inner2 {
-    padding: 0 3.16%;
-  }
-}
-
-@media all and (max-width:768px) {
-  .wrap_inner {
-    padding: 0px 4.26% 4.26%;
-  }
-
-  .wrap_inner2 {
-    padding: 0 4.26%;
-  }
-
-  .wrap_inner3 {
-    padding: 0 5.55%;
-  }
 }
