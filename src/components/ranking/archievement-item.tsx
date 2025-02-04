@@ -3,7 +3,7 @@ import { ArchievementRanking } from "../../types/ranking.types";
 
 const ArchievementItem = ({ rank }: { rank: ArchievementRanking }) => {
   return (
-    <div>
+    <div className="info_box">
       <p>{rank.ranking}</p>
       <p>{rank.character_name}</p>
       <p>{rank.world_name}</p>

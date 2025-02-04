@@ -1,7 +1,21 @@
 #main {
-  > ul {
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+  
+  
+  .rank_section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    .rank_box {
+      margin: 10px 0;
+      .rank_list {
+        .info_box {
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          column-gap: 5px;
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+    
   }
 }

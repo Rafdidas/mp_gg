@@ -8,12 +8,12 @@ interface ArchievementProps {
 
 const Archievement: FC<ArchievementProps> = ({ archievementRanking }) => {
   return (
-    <div>
+    <div className="rank_box">
       <h2>업적 랭킹</h2>
-      <ul>
+      <ul className="rank_list">
         {archievementRanking.map((rank) => {
           return (
-            <li key={rank.character_name} style={{ borderBottom: "1px solid #aaa" }}>
+            <li key={rank.character_name} >
               <ArchievementItem rank={rank} />
             </li>
           );

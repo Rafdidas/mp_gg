@@ -8,12 +8,12 @@ interface SeedProps {
 
 const Seed: FC<SeedProps> = ({ seedRanking }) => {
   return (
-    <div>
+    <div className="rank_box">
       <h2>더 시드 랭킹</h2>
-      <ul>
+      <ul className="rank_list">
         {seedRanking.map((rank) => {
           return (
-            <li key={rank.ranking} style={{ borderBottom: "1px solid #aaa" }}>
+            <li key={rank.ranking} >
               <SeedItem rank={rank} />
             </li>
           );

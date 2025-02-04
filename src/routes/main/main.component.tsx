@@ -6,6 +6,7 @@ import {
   SeedRanking,
   UnionRanking,
   GuildRanking,
+  Ocid,
 } from "../../types/ranking.types";
 import { useQuery } from "@tanstack/react-query";
 import { fetchRankingData } from "../../api/rankingApi";
@@ -17,6 +18,8 @@ import Seed from "../../components/ranking/seed";
 import Archievement from "../../components/ranking/archievement";
 import Guild from "../../components/ranking/guild";
 import UpdateList from "../../components/board/updateList";
+import RankCharacter from "../../components/rank_character/rank_character.component";
+
 import "./main.style.scss";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -31,6 +34,7 @@ const Main = () => {
   const seedUrl = `${BASE_URL}/ranking/theseed?date=${todayDate}&page=1`;
   const archievementUrl = `${BASE_URL}/ranking/achievement?date=${todayDate}&page=1`;
   const updateUrl = `${BASE_URL}/notice-update`;
+  
 
   const { data: overallRanking } = useQuery({
     queryKey: ["ranking", "overall"],
@@ -61,32 +65,38 @@ const Main = () => {
     queryFn: () => fetchUpdateData(updateUrl),
   });
 
+  const overallTop = overallRanking?.[0] || null;
+  const unionTop = unionRanking?.[0] || null;
+  const guildTop = guildRanking?.[0] || null;
+  const dojangTop = dojangRanking?.[0] || null;
+  const seedTop = seedRanking?.[0] || null;
+  const archievementTop = archievementRanking?.[0] || null;
+
+
   return (
     <section id="main">
       <h1>Main</h1>
-      <ul>
-        <li>
-          <Overall overallRanking={overallRanking || []} />
-        </li>
-        <li>
-          <Union unionRanking={unionRanking || []} />
-        </li>
-        <li>
-          <Guild guildRanking={guildRanking || []} />
-        </li>
-        <li>
-          <Dojang dojangRanking={dojangRanking || []} />
-        </li>
-        <li>
-          <Seed seedRanking={seedRanking || []} />
-        </li>
-        <li>
-          <Archievement archievementRanking={archievementRanking || []} />
-        </li>
-        <li>
-          <UpdateList updateList={updateList || []} />
-        </li>
-      </ul>
+      <section className="top_section">
+        <RankCharacter
+          overallTop={overallTop}
+          unionTop={unionTop}
+          guildTop={guildTop}
+          dojangTop={dojangTop}
+          seedTop={seedTop}
+          archievementTop={archievementTop}
+        />
+      </section>
+      <section className="rank_section main_section">
+        <Overall overallRanking={overallRanking || []} />
+        <Union unionRanking={unionRanking || []} />
+        <Guild guildRanking={guildRanking || []} />
+        <Dojang dojangRanking={dojangRanking || []} />
+        <Seed seedRanking={seedRanking || []} />
+        <Archievement archievementRanking={archievementRanking || []} />
+      </section>
+      <section className="board_section main_section">
+        <UpdateList updateList={updateList || []} />
+      </section>
     </section>
   );
 };

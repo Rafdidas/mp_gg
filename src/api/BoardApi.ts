@@ -11,5 +11,5 @@ export const fetchUpdateData = async (url: string): Promise<Update[]> => {
   });
   if (!response.ok) throw new Error(`Error: ${response.status}`);
   const data = await response.json();
-  return data.update_notice;
+  return data.update_notice.slice(0, 10);
 };
