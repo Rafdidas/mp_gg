@@ -1,9 +1,7 @@
-import { Update } from "../types/board.types";
-
 const API_KEY = process.env.REACT_APP_MAPLE_KEY;
 
 // 업데이트 목록 조회
-export const fetchUpdateData = async (url: string): Promise<Update[]> => {
+export const fetchUpdateData = async (url: string) => {
   const response = await fetch(url, {
     headers: {
       "x-nxopen-api-key": API_KEY || "",
