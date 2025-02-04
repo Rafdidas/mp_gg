@@ -40,7 +40,6 @@ const RankCharacter:FC<RankCharacterProps> = ({
       queryFn: () => fetchDataNormal<OverallRankTop>(overallTopUrl),
       enabled: !!ocid?.ocid,
     });
-
     console.log(overRankTop);
 
     return (
