@@ -3,7 +3,7 @@ import { SeedRanking } from "../../types/ranking.types";
 
 const SeedItem = ({ rank }: { rank: SeedRanking }) => {
   return (
-    <div>
+    <div className="info_box">
       <p>{rank.ranking}</p>
       <p>{rank.character_name}</p>
       <p>{rank.world_name}</p>

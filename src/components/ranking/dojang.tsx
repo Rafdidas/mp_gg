@@ -8,12 +8,12 @@ interface DojangProps {
 
 const Dojang: FC<DojangProps> = ({ dojangRanking }) => {
   return (
-    <div>
+    <div className="rank_box">
       <h2>무릉도장 랭킹</h2>
-      <ul>
+      <ul className="rank_list">
         {dojangRanking.map((rank) => {
           return (
-            <li key={rank.ranking} style={{ borderBottom: "1px solid #aaa" }}>
+            <li key={rank.ranking} >
               <DojangItem rank={rank} />
             </li>
           );

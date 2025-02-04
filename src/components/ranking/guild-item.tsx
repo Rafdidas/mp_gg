@@ -3,7 +3,7 @@ import { GuildRanking } from "../../types/ranking.types";
 
 const GuildItem = ({ rank }: { rank: GuildRanking }) => {
   return (
-    <div>
+    <div className="info_box">
       <p>{rank.ranking}</p>
       <p>{rank.world_name}</p>
       <p>{rank.guild_name}</p>

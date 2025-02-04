@@ -8,12 +8,12 @@ interface OverallProps {
 
 const Overall: FC<OverallProps> = ({ overallRanking }) => {
   return (
-    <div>
+    <div className="rank_box">
       <h2>종합 랭킹</h2>
-      <ul>
+      <ul className="rank_list">
         {overallRanking.map((rank) => {
           return (
-            <li key={rank.ranking} style={{ borderBottom: "1px solid #aaa" }}>
+            <li key={rank.ranking}>
               <OverallItem rank={rank} />
             </li>
           );

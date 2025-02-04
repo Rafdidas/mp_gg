@@ -8,12 +8,12 @@ interface GuildProps {
 
 const Guild: FC<GuildProps> = ({ guildRanking }) => {
   return (
-    <div>
+    <div className="rank_box">
       <h2>길드 랭킹</h2>
-      <ul>
+      <ul className="rank_list">
         {guildRanking.map((rank) => {
           return (
-            <li key={rank.ranking} style={{ borderBottom: "1px solid #aaa" }}>
+            <li key={rank.ranking} >
               <GuildItem rank={rank} />
             </li>
           );
