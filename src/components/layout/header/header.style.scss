@@ -1,0 +1,13 @@
+#header {
+  border-bottom: 1px solid blue;
+}
+
+.logo-wrapper {
+  gap: 8px;
+}
+
+nav {
+  > ul {
+    gap: 20px;
+  }
+}

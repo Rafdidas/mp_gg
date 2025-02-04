@@ -1,0 +1,30 @@
+// layout
+#wrapper {
+  position: relative;
+  text-align: left;
+}
+
+.wrap-inner {
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  @include tablet {
+    padding: 0 3.16%;
+  }
+  @include mobile {
+    padding: 0 4.16%;
+  }
+}
+
+// flex
+.flex-start-center {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

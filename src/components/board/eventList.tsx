@@ -7,7 +7,6 @@ interface EventListProps {
 }
 
 const EventList: FC<EventListProps> = ({ eventList }) => {
-  console.log(eventList);
   return (
     <div>
       <h2>진행 중인 이벤트 목록</h2>
