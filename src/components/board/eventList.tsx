@@ -7,15 +7,19 @@ interface EventListProps {
 }
 
 const EventList: FC<EventListProps> = ({ eventList }) => {
+  console.log(eventList);
   return (
     <div>
-      {eventList.map((list) => {
-        return (
-          <li key={list.notice_id} style={{ borderBottom: "1px solid #aaa" }}>
-            <EventListItem list={list} />
-          </li>
-        );
-      })}
+      <h2>진행 중인 이벤트 목록</h2>
+      <ul>
+        {eventList.map((list) => {
+          return (
+            <li key={list.notice_id} style={{ borderBottom: "1px solid #aaa" }}>
+              <EventListItem list={list} />
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };

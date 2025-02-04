@@ -1,16 +1,7 @@
 import { getTodayDate } from "../../utils/getTodayDate.utils";
-import {
-  ArchievementRanking,
-  DojangRanking,
-  OverallRanking,
-  SeedRanking,
-  UnionRanking,
-  GuildRanking,
-  Ocid,
-} from "../../types/ranking.types";
 import { useQuery } from "@tanstack/react-query";
 import { fetchRankingData } from "../../api/rankingApi";
-import { fetchUpdateData } from "../../api/BoardApi";
+import { fetchEventData, fetchUpdateData } from "../../api/BoardApi";
 import Overall from "../../components/ranking/overall";
 import Union from "../../components/ranking/union";
 import Dojang from "../../components/ranking/dojang";
@@ -19,9 +10,9 @@ import Archievement from "../../components/ranking/archievement";
 import Guild from "../../components/ranking/guild";
 import UpdateList from "../../components/board/updateList";
 import RankCharacter from "../../components/rank_character/rank_character.component";
+import EventList from "../../components/board/eventList";
 
 import "./main.style.scss";
-import EventList from "../../components/board/eventList";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -67,7 +58,7 @@ const Main = () => {
   });
   const { data: eventList } = useQuery({
     queryKey: ["board", "eventList"],
-    queryFn: () => fetchUpdateData(eventUrl),
+    queryFn: () => fetchEventData(eventUrl),
   });
 
   const overallTop = overallRanking?.[0] || null;
