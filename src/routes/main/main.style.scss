@@ -1,5 +1,11 @@
 #main {
-  
+  .top_section {
+    .rank_top_section {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+    }
+  }
   
   .rank_section {
     display: grid;
