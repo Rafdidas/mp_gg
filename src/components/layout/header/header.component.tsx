@@ -1,5 +1,6 @@
 import { FC } from "react";
 import "./header.style.scss";
+import SearchBar from "../search/searchBar";
 
 const Header: FC = () => {
   return (
@@ -11,17 +12,7 @@ const Header: FC = () => {
               <h1>MP.GG</h1>
               <p>메이플스토리</p>
             </div>
-            <div>
-              <form className="search-form">
-                <input
-                  className="search-input"
-                  placeholder="캐릭터 또는 길드"
-                />
-                <button className="search-btn" type="submit">
-                  버튼
-                </button>
-              </form>
-            </div>
+            <SearchBar />
           </div>
         </div>
       </div>
