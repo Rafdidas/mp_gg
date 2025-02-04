@@ -6,7 +6,6 @@ import {
   SeedRanking,
   UnionRanking,
   GuildRanking,
-  Ocid,
 } from "../../types/ranking.types";
 import { useQuery } from "@tanstack/react-query";
 import { fetchRankingData } from "../../api/rankingApi";
@@ -67,24 +66,15 @@ const Main = () => {
 
   const overallTop = overallRanking?.[0] || null;
   const unionTop = unionRanking?.[0] || null;
-  const guildTop = guildRanking?.[0] || null;
   const dojangTop = dojangRanking?.[0] || null;
   const seedTop = seedRanking?.[0] || null;
   const archievementTop = archievementRanking?.[0] || null;
-
 
   return (
     <section id="main">
       <h1>Main</h1>
       <section className="top_section">
-        <RankCharacter
-          overallTop={overallTop}
-          unionTop={unionTop}
-          guildTop={guildTop}
-          dojangTop={dojangTop}
-          seedTop={seedTop}
-          archievementTop={archievementTop}
-        />
+        <RankCharacter rankData={[overallTop, unionTop, dojangTop, seedTop, archievementTop].filter(Boolean)} />
       </section>
       <section className="rank_section main_section">
         <Overall overallRanking={overallRanking || []} />
