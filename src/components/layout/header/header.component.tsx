@@ -9,7 +9,9 @@ const Header: FC = () => {
         <div className="wrap-inner">
           <div className="flex-between-center">
             <div className="logo-wrapper flex-start-center">
-              <h1>MP.GG</h1>
+              <h1>
+                <a href="/">MP.GG</a>
+              </h1>
               <p>메이플스토리</p>
             </div>
             <SearchBar />
