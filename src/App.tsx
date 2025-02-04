@@ -1,9 +1,8 @@
-import React, { FC } from "react";
-
-import "./App.css";
+import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./routes/home/home.component";
 import Main from "./routes/main/main.component";
+import "./styles/reset.scss";
 
 const App: FC = () => {
   return (
