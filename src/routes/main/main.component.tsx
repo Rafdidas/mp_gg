@@ -1,16 +1,7 @@
 import { getTodayDate } from "../../utils/getTodayDate.utils";
-import {
-  ArchievementRanking,
-  DojangRanking,
-  OverallRanking,
-  SeedRanking,
-  UnionRanking,
-  GuildRanking,
-  Ocid,
-} from "../../types/ranking.types";
 import { useQuery } from "@tanstack/react-query";
 import { fetchRankingData } from "../../api/rankingApi";
-import { fetchUpdateData } from "../../api/BoardApi";
+import { fetchEventData, fetchUpdateData } from "../../api/BoardApi";
 import Overall from "../../components/ranking/overall";
 import Union from "../../components/ranking/union";
 import Dojang from "../../components/ranking/dojang";
@@ -19,6 +10,7 @@ import Archievement from "../../components/ranking/archievement";
 import Guild from "../../components/ranking/guild";
 import UpdateList from "../../components/board/updateList";
 import RankCharacter from "../../components/rank_character/rank_character.component";
+import EventList from "../../components/board/eventList";
 
 import "./main.style.scss";
 
@@ -34,35 +26,39 @@ const Main = () => {
   const seedUrl = `${BASE_URL}/ranking/theseed?date=${todayDate}&page=1`;
   const archievementUrl = `${BASE_URL}/ranking/achievement?date=${todayDate}&page=1`;
   const updateUrl = `${BASE_URL}/notice-update`;
-  
+  const eventUrl = `${BASE_URL}/notice-event`;
 
   const { data: overallRanking } = useQuery({
     queryKey: ["ranking", "overall"],
-    queryFn: () => fetchRankingData<OverallRanking>(overallUrl),
+    queryFn: () => fetchRankingData(overallUrl),
   });
   const { data: unionRanking } = useQuery({
     queryKey: ["ranking", "unionRanking"],
-    queryFn: () => fetchRankingData<UnionRanking>(unionUrl),
+    queryFn: () => fetchRankingData(unionUrl),
   });
   const { data: guildRanking } = useQuery({
     queryKey: ["ranking", "guildRanking"],
-    queryFn: () => fetchRankingData<GuildRanking>(guildUrl),
+    queryFn: () => fetchRankingData(guildUrl),
   });
   const { data: dojangRanking } = useQuery({
     queryKey: ["ranking", "dojangRanking"],
-    queryFn: () => fetchRankingData<DojangRanking>(dojangUrl),
+    queryFn: () => fetchRankingData(dojangUrl),
   });
   const { data: seedRanking } = useQuery({
     queryKey: ["ranking", "seedRanking"],
-    queryFn: () => fetchRankingData<SeedRanking>(seedUrl),
+    queryFn: () => fetchRankingData(seedUrl),
   });
   const { data: archievementRanking } = useQuery({
     queryKey: ["ranking", "archievementRanking"],
-    queryFn: () => fetchRankingData<ArchievementRanking>(archievementUrl),
+    queryFn: () => fetchRankingData(archievementUrl),
   });
   const { data: updateList } = useQuery({
     queryKey: ["board", "updateList"],
     queryFn: () => fetchUpdateData(updateUrl),
+  });
+  const { data: eventList } = useQuery({
+    queryKey: ["board", "eventList"],
+    queryFn: () => fetchEventData(eventUrl),
   });
 
   const overallTop = overallRanking?.[0] || null;
@@ -71,7 +67,6 @@ const Main = () => {
   const dojangTop = dojangRanking?.[0] || null;
   const seedTop = seedRanking?.[0] || null;
   const archievementTop = archievementRanking?.[0] || null;
-
 
   return (
     <section id="main">
@@ -96,6 +91,7 @@ const Main = () => {
       </section>
       <section className="board_section main_section">
         <UpdateList updateList={updateList || []} />
+        <EventList eventList={eventList || []} />
       </section>
     </section>
   );
