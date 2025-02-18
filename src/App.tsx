@@ -4,6 +4,7 @@ import Home from "./routes/home/home.component";
 import Main from "./routes/main/main.component";
 import "./styles/reset.scss";
 import Search from "./routes/searchPage/search";
+import Total from "./routes/ranks/total";
 
 const App: FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: FC = () => {
       <Route path="/" element={<Home />}>
         <Route path="/" element={<Main />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/ranks/total" element={<Total />} />
       </Route>
     </Routes>
   );

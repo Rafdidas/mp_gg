@@ -34,6 +34,7 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
         const ocidData = await fetchDataNormal<Ocid>(
           `${BASE_URL}/id?character_name=${rank.character_name}`
         );
+        console.log(ocidData);
         return ocidData.ocid;
       },
       enabled: !!rank?.character_name,
@@ -92,7 +93,10 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Union Level: {rankInfo.union_level}</p>
                   <p>Union Power: {rankInfo.union_power}</p>
                 </div>
-                <img src={character.character_image} alt={character.character_name} />
+                <img
+                  src={character.character_image}
+                  alt={character.character_name}
+                />
               </>
             )}
 
@@ -108,7 +112,10 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Dojang Floor: {rankInfo.dojang_floor}</p>
                   <p>Time Record: {rankInfo.dojang_time_record}</p>
                 </div>
-                <img src={character.character_image} alt={character.character_name} />
+                <img
+                  src={character.character_image}
+                  alt={character.character_name}
+                />
               </>
             )}
 
@@ -124,7 +131,10 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Seed Floor: {rankInfo.theseed_floor}</p>
                   <p>Time Record: {rankInfo.theseed_time_record}</p>
                 </div>
-                <img src={character.character_image} alt={character.character_name} />
+                <img
+                  src={character.character_image}
+                  alt={character.character_name}
+                />
               </>
             )}
 
@@ -140,7 +150,10 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Trophy Grade: {rankInfo.trophy_grade}</p>
                   <p>Trophy Score: {rankInfo.trophy_score}</p>
                 </div>
-                <img src={character.character_image} alt={character.character_name} />
+                <img
+                  src={character.character_image}
+                  alt={character.character_name}
+                />
               </>
             )}
           </div>
