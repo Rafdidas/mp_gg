@@ -8,6 +8,5 @@ export const fetchRankingData = async (url: string) => {
   });
   if (!response.ok) throw new Error(`Error: ${response.status}`);
   const data = await response.json();
-  // console.log(data);
   return data.ranking.slice(0, 10);
 };

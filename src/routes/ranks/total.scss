@@ -1,0 +1,19 @@
+.ranking-grid {
+  border: 1px solid red;
+  & > li {
+    display: grid;
+    grid-template-columns: 130px 1fr 130px 130px;
+    align-items: center;
+    border-top: 1px solid #f0f3f5;
+    & > p,
+    & > div {
+      text-align: center;
+    }
+    & > .char-info {
+      text-align: left;
+    }
+  }
+  & > li.ranking-grid-head {
+    background: #f0f3f5;
+  }
+}

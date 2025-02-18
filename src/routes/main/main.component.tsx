@@ -1,5 +1,5 @@
 import { getTodayDate } from "../../utils/getTodayDate.utils";
-import { useQueries } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { fetchRankingData } from "../../api/rankingApi";
 import { fetchEventData, fetchUpdateData } from "../../api/BoardApi";
 
@@ -30,60 +30,55 @@ const API_ENDPOINTS = {
 };
 
 const Main = () => {
-  const queries = useQueries({
-    queries: [
-      {
-        queryKey: ["ranking", "overall"],
-        queryFn: () => fetchRankingData(API_ENDPOINTS.overall),
-      },
-      {
-        queryKey: ["ranking", "union"],
-        queryFn: () => fetchRankingData(API_ENDPOINTS.union),
-      },
-      {
-        queryKey: ["ranking", "guild"],
-        queryFn: () => fetchRankingData(API_ENDPOINTS.guild),
-      },
-      {
-        queryKey: ["ranking", "dojang"],
-        queryFn: () => fetchRankingData(API_ENDPOINTS.dojang),
-      },
-      {
-        queryKey: ["ranking", "seed"],
-        queryFn: () => fetchRankingData(API_ENDPOINTS.seed),
-      },
-      {
-        queryKey: ["ranking", "archievement"],
-        queryFn: () => fetchRankingData(API_ENDPOINTS.archievement),
-      },
-      {
-        queryKey: ["board", "updateList"],
-        queryFn: () => fetchUpdateData(API_ENDPOINTS.update),
-      },
-      {
-        queryKey: ["board", "eventList"],
-        queryFn: () => fetchEventData(API_ENDPOINTS.event),
-      },
-    ],
-  });
+  // 랭킹 데이터 요청
+  const rankingQueries = {
+    overall: useQuery({
+      queryKey: ["ranking", "overall"],
+      queryFn: () => fetchRankingData(API_ENDPOINTS.overall),
+      staleTime: 1000 * 60 * 5,
+    }),
+    union: useQuery({
+      queryKey: ["ranking", "union"],
+      queryFn: () => fetchRankingData(API_ENDPOINTS.union),
+    }),
+    guild: useQuery({
+      queryKey: ["ranking", "guild"],
+      queryFn: () => fetchRankingData(API_ENDPOINTS.guild),
+    }),
+    dojang: useQuery({
+      queryKey: ["ranking", "dojang"],
+      queryFn: () => fetchRankingData(API_ENDPOINTS.dojang),
+    }),
+    seed: useQuery({
+      queryKey: ["ranking", "seed"],
+      queryFn: () => fetchRankingData(API_ENDPOINTS.seed),
+    }),
+    archievement: useQuery({
+      queryKey: ["ranking", "archievement"],
+      queryFn: () => fetchRankingData(API_ENDPOINTS.archievement),
+    }),
+  };
 
-  const [
-    overall,
-    union,
-    guild,
-    dojang,
-    seed,
-    archievement,
-    updateList,
-    eventList,
-  ] = queries.map((q) => q.data || []);
+  console.log("overallRanking 캐싱 여부:", rankingQueries.overall);
+
+  // 게시판 데이터 요청
+  const boardQueries = {
+    updateList: useQuery({
+      queryKey: ["board", "updateList"],
+      queryFn: () => fetchUpdateData(API_ENDPOINTS.update),
+    }),
+    eventList: useQuery({
+      queryKey: ["board", "eventList"],
+      queryFn: () => fetchEventData(API_ENDPOINTS.event),
+    }),
+  };
 
   const rankData = [
-    overall?.[0],
-    union?.[0],
-    dojang?.[0],
-    seed?.[0],
-    archievement?.[0],
+    rankingQueries.overall.data?.[0],
+    rankingQueries.union.data?.[0],
+    rankingQueries.dojang.data?.[0],
+    rankingQueries.seed.data?.[0],
+    rankingQueries.archievement.data?.[0],
   ].filter(Boolean);
 
   return (
@@ -93,16 +88,18 @@ const Main = () => {
         <RankCharacter rankData={rankData} />
       </section>
       <section className="rank_section main_section">
-        <Overall overallRanking={overall} />
-        <Union unionRanking={union} />
-        <Guild guildRanking={guild} />
-        <Dojang dojangRanking={dojang} />
-        <Seed seedRanking={seed} />
-        <Archievement archievementRanking={archievement} />
+        <Overall overallRanking={rankingQueries.overall.data || []} />
+        <Union unionRanking={rankingQueries.union.data || []} />
+        <Guild guildRanking={rankingQueries.guild.data || []} />
+        <Dojang dojangRanking={rankingQueries.dojang.data || []} />
+        <Seed seedRanking={rankingQueries.seed.data || []} />
+        <Archievement
+          archievementRanking={rankingQueries.archievement.data || []}
+        />
       </section>
       <section className="board_section main_section">
-        <UpdateList updateList={updateList} />
-        <EventList eventList={eventList} />
+        <UpdateList updateList={boardQueries.updateList.data || []} />
+        <EventList eventList={boardQueries.eventList.data || []} />
       </section>
     </section>
   );
