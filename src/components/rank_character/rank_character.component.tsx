@@ -10,6 +10,7 @@ import {
   Ocid,
   OverallRankTop,
 } from "../../types/ranking.types";
+import { Link } from "react-router-dom";
 
 interface RankCharacterProps {
   rankData: (
@@ -49,11 +50,15 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
         const characterData = await fetchDataNormal<OverallRankTop>(
           `${BASE_URL}/character/basic?ocid=${ocid}`
         );
-        return characterData;
+        
+        return { characterData, ocid };
       },
       enabled: !!ocid,
     })),
+    
   });
+
+  
 
   return (
     <div className="rank_top_section">
@@ -62,21 +67,27 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
         <div className="rank_top_box">
           <h3>이번 주 랭킹 1위</h3>
           <div className="info">
-            <p>{characterQueries[0].data.character_name}</p>
-            <p>Lv.{characterQueries[0].data.character_level}</p>
-            <p>{characterQueries[0].data.character_class}</p>
-            <p>World: {characterQueries[0].data.world_name}</p>
+            <p>{characterQueries[0].data.characterData.character_name}</p>
+            <p>Lv.{characterQueries[0].data.characterData.character_level}</p>
+            <p>{characterQueries[0].data.characterData.character_class}</p>
+            <p>World: {characterQueries[0].data.characterData.world_name}</p>
           </div>
           <img
-            src={characterQueries[0].data.character_image}
-            alt={characterQueries[0].data.character_name}
+            src={characterQueries[0].data.characterData.character_image}
+            alt={characterQueries[0].data.characterData.character_name}
           />
+          <div className="link_detail">
+            <Link to={`/character-detail/${characterQueries[0].data.ocid}`}>상세보기</Link>
+          </div>
         </div>
       )}
 
       {/* ✅ 유니온, 무릉도장, 더 시드, 업적 랭킹을 map()으로 추가 */}
-      {characterQueries.slice(1).map(({ data: character }, index) => {
+      {characterQueries.slice(1).map(({ data }, index) => {
         const rankInfo = rankData[index + 1];
+        const character = data?.characterData;
+        const ocid = data?.ocid;
+
 
         return character ? (
           <div key={index} className="rank_top_box">
@@ -93,6 +104,9 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Union Power: {rankInfo.union_power}</p>
                 </div>
                 <img src={character.character_image} alt={character.character_name} />
+                <div className="link_detail">
+                  <Link to={`character-detail/${ocid}`}>상세보기</Link>
+                </div>
               </>
             )}
 
@@ -109,6 +123,9 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Time Record: {rankInfo.dojang_time_record}</p>
                 </div>
                 <img src={character.character_image} alt={character.character_name} />
+                <div className="link_detail">
+                  <Link to={`character-detail/${ocid}`}>상세보기</Link>
+                </div>
               </>
             )}
 
@@ -125,6 +142,9 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Time Record: {rankInfo.theseed_time_record}</p>
                 </div>
                 <img src={character.character_image} alt={character.character_name} />
+                <div className="link_detail">
+                  <Link to={`character-detail/${ocid}`}>상세보기</Link>
+                </div>
               </>
             )}
 
@@ -141,6 +161,9 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Trophy Score: {rankInfo.trophy_score}</p>
                 </div>
                 <img src={character.character_image} alt={character.character_name} />
+                <div className="link_detail">
+                  <Link to={`character-detail/${ocid}`}>상세보기</Link>
+                </div>
               </>
             )}
           </div>
