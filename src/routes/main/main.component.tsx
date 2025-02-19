@@ -17,6 +17,7 @@ import "./main.style.scss";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const todayDate = getTodayDate();
+const Limit = 10;
 
 const API_ENDPOINTS = {
   overall: `${BASE_URL}/ranking/overall?date=${todayDate}`,
@@ -34,32 +35,30 @@ const Main = () => {
   const rankingQueries = {
     overall: useQuery({
       queryKey: ["ranking", "overall"],
-      queryFn: () => fetchRankingData(API_ENDPOINTS.overall),
+      queryFn: () => fetchRankingData(API_ENDPOINTS.overall, Limit),
       staleTime: 1000 * 60 * 5,
     }),
     union: useQuery({
       queryKey: ["ranking", "union"],
-      queryFn: () => fetchRankingData(API_ENDPOINTS.union),
+      queryFn: () => fetchRankingData(API_ENDPOINTS.union, Limit),
     }),
     guild: useQuery({
       queryKey: ["ranking", "guild"],
-      queryFn: () => fetchRankingData(API_ENDPOINTS.guild),
+      queryFn: () => fetchRankingData(API_ENDPOINTS.guild, Limit),
     }),
     dojang: useQuery({
       queryKey: ["ranking", "dojang"],
-      queryFn: () => fetchRankingData(API_ENDPOINTS.dojang),
+      queryFn: () => fetchRankingData(API_ENDPOINTS.dojang, Limit),
     }),
     seed: useQuery({
       queryKey: ["ranking", "seed"],
-      queryFn: () => fetchRankingData(API_ENDPOINTS.seed),
+      queryFn: () => fetchRankingData(API_ENDPOINTS.seed, Limit),
     }),
     archievement: useQuery({
       queryKey: ["ranking", "archievement"],
-      queryFn: () => fetchRankingData(API_ENDPOINTS.archievement),
+      queryFn: () => fetchRankingData(API_ENDPOINTS.archievement, Limit),
     }),
   };
-
-  console.log("overallRanking 캐싱 여부:", rankingQueries.overall);
 
   // 게시판 데이터 요청
   const boardQueries = {

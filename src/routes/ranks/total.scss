@@ -1,19 +1,55 @@
-.ranking-grid {
-  border: 1px solid red;
-  & > li {
-    display: grid;
-    grid-template-columns: 130px 1fr 130px 130px;
-    align-items: center;
-    border-top: 1px solid #f0f3f5;
-    & > p,
-    & > div {
-      text-align: center;
-    }
-    & > .char-info {
-      text-align: left;
+.list-box {
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid #f0f3f5;
+  .list-tit {
+    padding: 13px 16px;
+    font-size: 14px;
+    & strong {
+      font: inherit;
     }
   }
-  & > li.ranking-grid-head {
-    background: #f0f3f5;
+  .ranking-grid {
+    & > li {
+      display: grid;
+      grid-template-columns: 130px 1fr 130px 130px;
+      align-items: center;
+      padding: 7px 0;
+      border-top: 1px solid #f0f3f5;
+      & > p,
+      & > div {
+        text-align: center;
+      }
+      & > .char-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-align: left;
+        & > p {
+          .level-word {
+            display: block;
+            color: rgb(102, 106, 122);
+          }
+        }
+        & > p.img {
+          width: 56px;
+          height: 56px;
+          & img {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+      .char-popular {
+        color: rgb(102, 106, 122);
+      }
+      .char-guild {
+        color: rgb(109, 98, 161);
+      }
+    }
+    & > li.ranking-grid-head {
+      padding: 12px 0;
+      background: #f0f3f5;
+    }
   }
 }

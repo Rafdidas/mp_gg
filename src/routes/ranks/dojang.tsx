@@ -16,7 +16,7 @@ import "./total.scss";
 
 const todayDate = getTodayDate();
 
-const Total = () => {
+const Dojang = () => {
   const [limit, setLimit] = useState(10);
   const [ocidData, setOcidData] = useState<Record<string, string | null>>({});
   const [characterData, setCharacterData] = useState<
@@ -136,4 +136,4 @@ const Total = () => {
   );
 };
 
-export default Total;
+export default Dojang;
