@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { OverallRanking } from "../../types/ranking.types";
 import OverallItem from "./overall-item";
+import { Link } from "react-router-dom";
 
 interface OverallProps {
   overallRanking: OverallRanking[];
@@ -10,6 +11,9 @@ const Overall: FC<OverallProps> = ({ overallRanking }) => {
   return (
     <div className="rank_box">
       <h2>종합 랭킹</h2>
+      <p>
+        <Link to={`/ranks/total`}>더보기</Link>
+      </p>
       <ul className="rank_list">
         {overallRanking.map((rank) => {
           return (

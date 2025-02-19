@@ -82,6 +82,7 @@ export interface OverallRankTop {
   character_date_create: string;
   access_flag: string;
   liberation_quest_clear_flag: string;
+  ocidData?: string;
 }
 
 export interface CharacterPopularity {
@@ -92,10 +93,12 @@ export interface CharacterPopularity {
 export interface CharacterStat {
   date: string;
   character_class: string;
-  final_stat: [{
-    stat_name: string;
-    stat_value: number;
-  }];
+  final_stat: [
+    {
+      stat_name: string;
+      stat_value: number;
+    }
+  ];
   remain_ap: number;
 }
 

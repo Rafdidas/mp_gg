@@ -35,6 +35,7 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
         const ocidData = await fetchDataNormal<Ocid>(
           `${BASE_URL}/id?character_name=${rank.character_name}`
         );
+        console.log(ocidData);
         return ocidData.ocid;
       },
       enabled: !!rank?.character_name,
@@ -50,15 +51,12 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
         const characterData = await fetchDataNormal<OverallRankTop>(
           `${BASE_URL}/character/basic?ocid=${ocid}`
         );
-        
+
         return { characterData, ocid };
       },
       enabled: !!ocid,
     })),
-    
   });
-
-  
 
   return (
     <div className="rank_top_section">
@@ -77,7 +75,9 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
             alt={characterQueries[0].data.characterData.character_name}
           />
           <div className="link_detail">
-            <Link to={`/character-detail/${characterQueries[0].data.ocid}`}>상세보기</Link>
+            <Link to={`/character-detail/${characterQueries[0].data.ocid}`}>
+              상세보기
+            </Link>
           </div>
         </div>
       )}
@@ -87,7 +87,6 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
         const rankInfo = rankData[index + 1];
         const character = data?.characterData;
         const ocid = data?.ocid;
-
 
         return character ? (
           <div key={index} className="rank_top_box">
@@ -103,7 +102,10 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Union Level: {rankInfo.union_level}</p>
                   <p>Union Power: {rankInfo.union_power}</p>
                 </div>
-                <img src={character.character_image} alt={character.character_name} />
+                <img
+                  src={character.character_image}
+                  alt={character.character_name}
+                />
                 <div className="link_detail">
                   <Link to={`character-detail/${ocid}`}>상세보기</Link>
                 </div>
@@ -122,7 +124,10 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Dojang Floor: {rankInfo.dojang_floor}</p>
                   <p>Time Record: {rankInfo.dojang_time_record}</p>
                 </div>
-                <img src={character.character_image} alt={character.character_name} />
+                <img
+                  src={character.character_image}
+                  alt={character.character_name}
+                />
                 <div className="link_detail">
                   <Link to={`character-detail/${ocid}`}>상세보기</Link>
                 </div>
@@ -141,7 +146,10 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Seed Floor: {rankInfo.theseed_floor}</p>
                   <p>Time Record: {rankInfo.theseed_time_record}</p>
                 </div>
-                <img src={character.character_image} alt={character.character_name} />
+                <img
+                  src={character.character_image}
+                  alt={character.character_name}
+                />
                 <div className="link_detail">
                   <Link to={`character-detail/${ocid}`}>상세보기</Link>
                 </div>
@@ -160,7 +168,10 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
                   <p>Trophy Grade: {rankInfo.trophy_grade}</p>
                   <p>Trophy Score: {rankInfo.trophy_score}</p>
                 </div>
-                <img src={character.character_image} alt={character.character_name} />
+                <img
+                  src={character.character_image}
+                  alt={character.character_name}
+                />
                 <div className="link_detail">
                   <Link to={`character-detail/${ocid}`}>상세보기</Link>
                 </div>

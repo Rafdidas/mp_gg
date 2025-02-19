@@ -1,4 +1,3 @@
-import React from "react";
 import { OverallRanking } from "../../types/ranking.types";
 
 const OverallItem = ({ rank }: { rank: OverallRanking }) => {
