@@ -13,7 +13,7 @@ const SearchBar = () => {
     e.preventDefault();
     if (query.trim() === "") return;
 
-    navigate(`/search?q=${query}`);
+    navigate(`/character-detail/${encodeURIComponent(query)}`);
   };
   return (
     <div>
@@ -23,7 +23,7 @@ const SearchBar = () => {
           type="text"
           value={query}
           onChange={handleChange}
-          placeholder="캐릭터 또는 길드"
+          placeholder="캐릭터명"
         />
         <button className="search-btn" type="submit">
           버튼

@@ -1,9 +1,110 @@
 #main {
   .top_section {
     .rank_top_section {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
       justify-content: center;
       align-items: start;
+      column-gap: 2rem;
+      .rank_top_box {
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid #aaa;
+        text-align: center;
+        &.total_top {
+          border: 1px solid #D9534F;
+          & > h3 {
+            color: #D9534F;
+          }
+        }
+        &.rank_top_box0 {
+          border:1px solid #f6a730;
+          & > h3 {
+            color: #f6a730;
+          }
+        }
+        &.rank_top_box1 {
+          border:1px solid #5cb85c;
+          & > h3 {
+            color: #5cb85c;
+          }
+        }
+        &.rank_top_box2 {
+          border:1px solid #5393ca;
+          & > h3 {
+            color: #5393ca;
+          }
+        }
+        &.rank_top_box3 {
+          border:1px solid #6d62a1;
+          & > h3 {
+            color: #6d62a1;
+          }
+        }
+
+        & > h3 {
+          padding: 1rem 2rem;
+          font-size: 1.167rem;
+          border-bottom: 1px solid #e9eaed;
+        }
+        
+        .info {
+          display: flex;
+          justify-content: center;
+          column-gap: 3px;
+          padding: 1rem;
+          & * {
+            display: flex;
+            align-items: center;
+          }
+        }
+        .add_info {
+          padding: 1rem;
+
+          & > p:first-of-type {
+            font-size: 1.333rem;
+            font-weight: bold;
+          }
+          & > p:last-of-type {
+            color: #848999;
+          }
+        }
+
+        &.total_top {
+          .link_detail {
+            background: #D9534F;
+          }
+        }
+        &.rank_top_box0 {
+          .link_detail {
+            background: #f6a730;
+          }
+        }
+        &.rank_top_box1 {
+          .link_detail {
+            background: #5cb85c;
+          }
+        }
+        &.rank_top_box2 {
+          .link_detail {
+            background: #5393ca;
+          }
+        }
+        &.rank_top_box3 {
+          .link_detail {
+            background: #6d62a1;
+          }
+        }
+
+        .link_detail {
+          padding: 0.5rem 0;
+          & > a {
+            display: block;
+            color: #fff;
+            font-weight: 600;
+          }
+        }
+      }
     }
   }
   
@@ -25,3 +126,11 @@
     
   }
 }
+
+@media all and (min-width: 1024px) {
+  .rank_top_section {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+@media all and (max-width: 768px) {}
