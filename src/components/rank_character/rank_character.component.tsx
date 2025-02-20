@@ -35,7 +35,6 @@ const RankCharacter: FC<RankCharacterProps> = ({ rankData }) => {
         const ocidData = await fetchDataNormal<Ocid>(
           `${BASE_URL}/id?character_name=${rank.character_name}`
         );
-        console.log(ocidData);
         return ocidData.ocid;
       },
       enabled: !!rank?.character_name,
