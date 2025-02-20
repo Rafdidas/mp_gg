@@ -7,7 +7,9 @@ const Home: FC = () => {
   return (
     <div id="wrapper">
       <Header />
-      <Outlet />
+      <div className="wrap-inner">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

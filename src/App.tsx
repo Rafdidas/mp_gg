@@ -19,7 +19,7 @@ const App: FC = () => {
         <Route path="/" element={<Home />}>
           <Route index element={<Main />} />
           <Route path="search" element={<Search />} />
-          <Route path="character-detail/:ocid" element={<CharacterDetail />} />
+          <Route path="character-detail/:characterName" element={<CharacterDetail />} />
           <Route path="/ranks/total" element={<Total />} />
           <Route path="/ranks/dojang" element={<Dojang />} />
         </Route>
