@@ -4,4 +4,102 @@
         justify-content: center;
         align-items: center;
     }
+    .preset_list {
+        li.active {
+            font-weight: bold;
+        }
+    }
+    .tab_list {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        column-gap: 30px;
+
+        font-size: 2rem;
+    }
+
+    .detail_tab {
+        display: none;
+
+        &.active {display: block;}
+    }
+
+    
+    .detail_stat {
+        .stat_box {
+            display: flex;
+            column-gap: 20px;
+    
+            .hyper_stat_box {
+                .stat {
+                    display: none;
+    
+                    &.active {
+                        display: block;
+                    }
+    
+                    .stat_level {
+                        display: inline-block;
+                        min-width: 30px;
+                    }
+                }
+            }
+    
+        }
+    
+        .item_equip {
+            .equip_box {
+                .equip_preset {
+                    display: none;
+    
+                    &.active {
+                        display: block;
+                    }
+                }
+    
+                .item_part_wrap {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+    
+                    .item_part {
+                        margin: 10px;
+                        border: 1px solid gray;
+    
+                        p {
+                            text-transform: uppercase;
+                        }
+    
+                        .img {
+                            img {
+                                max-width: 60px;
+                                height: auto;
+                            }
+                        }
+                    }
+                }
+    
+            }
+        }
+    }
+
+    .detail_skill {
+        .skill_list {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            align-items: start;
+            justify-content: center;
+
+            border: 1px solid gray;
+        }
+        .symbol_list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            align-items: start;
+            justify-content: center;
+        
+            border: 1px solid gray;
+        }
+    }
+    
+    
 }
