@@ -3,12 +3,24 @@ import './character_detail.style.scss';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { fetchDataNormal } from '../../api/rankingTopApi';
-import { CashEquipment, CharacterPopularity, CharacterStat, HyperStat, ItemEquipment, OverallRankTop, SkiiInfo, SymbolInfo } from '../../types/ranking.types';
+import { CashEquipment, CharacterPopularity, CharacterStat, HyperStat, ItemEquipment, Ocid, OverallRankTop, SkiiInfo, SymbolInfo } from '../../types/ranking.types';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const CharacterDetail:FC = () => {
-    const { ocid } = useParams<{ ocid: string }>();
+    const { characterName } = useParams<{ characterName: string }>();
+    //ocid
+    const { data: ocidData } = useQuery({
+        queryKey: ["ocid", characterName],
+        queryFn: async () => {
+            if (!characterName) return null;
+            const response = await fetchDataNormal<Ocid>(`${BASE_URL}/id?character_name=${characterName}`);
+            return response.ocid;
+        },
+        enabled: !!characterName,
+    });
+
+    const ocid = ocidData || null;
 
     //기본 정보
     const { data: characterInfo } = useQuery({
