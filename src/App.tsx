@@ -9,6 +9,7 @@ import "./styles/reset.scss";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Dojang from "./routes/ranks/dojang";
+import Union from "./routes/ranks/union";
 
 const queryClient = new QueryClient();
 
@@ -19,9 +20,13 @@ const App: FC = () => {
         <Route path="/" element={<Home />}>
           <Route index element={<Main />} />
           <Route path="search" element={<Search />} />
-          <Route path="character-detail/:characterName" element={<CharacterDetail />} />
+          <Route
+            path="character-detail/:characterName"
+            element={<CharacterDetail />}
+          />
           <Route path="/ranks/total" element={<Total />} />
           <Route path="/ranks/dojang" element={<Dojang />} />
+          <Route path="/ranks/union" element={<Union />} />
         </Route>
       </Routes>
       <ReactQueryDevtools initialIsOpen={false} />
