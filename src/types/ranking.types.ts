@@ -42,6 +42,7 @@ export interface DojangRanking {
   character_level: number;
   dojang_floor: number;
   dojang_time_record: number;
+  character_guild_name?: string;
 }
 
 export interface SeedRanking {
@@ -83,6 +84,7 @@ export interface OverallRankTop {
   access_flag: string;
   liberation_quest_clear_flag: string;
   ocidData?: string;
+  guildName?: string;
 }
 
 export interface CharacterPopularity {
@@ -103,7 +105,7 @@ export interface CharacterStat {
 }
 
 export interface HyperStat {
-  date: string
+  date: string;
   character_class: string;
   use_preset_no: string;
   use_available_hyper_stat: number;
@@ -114,7 +116,7 @@ export interface HyperStat {
       stat_level: number;
       stat_increase: string;
     }
-  ],
+  ];
   hyper_stat_preset_1_remain_point: number;
   hyper_stat_preset_2: [
     {
@@ -123,7 +125,7 @@ export interface HyperStat {
       stat_level: number;
       stat_increase: string;
     }
-  ],
+  ];
   hyper_stat_preset_2_remain_point: number;
   hyper_stat_preset_3: [
     {
@@ -132,7 +134,7 @@ export interface HyperStat {
       stat_level: number;
       stat_increase: string;
     }
-  ],
+  ];
   hyper_stat_preset_3_remain_point: number;
 }
 
@@ -170,7 +172,7 @@ export interface ItemEquipment {
         equipment_level_decrease: number;
         max_hp_rate: string;
         max_mp_rate: string;
-      },
+      };
       item_base_option: {
         str: string;
         dex: string;
@@ -189,7 +191,7 @@ export interface ItemEquipment {
         max_hp_rate: string;
         max_mp_rate: string;
         base_equipment_level: number;
-      },
+      };
       potential_option_flag: string;
       additional_potential_option_flag: string;
       potential_option_grade: string;
@@ -211,7 +213,7 @@ export interface ItemEquipment {
         attack_power: string;
         magic_power: string;
         exceptional_upgrade: number;
-      },
+      };
       item_add_option: {
         str: string;
         dex: string;
@@ -228,7 +230,7 @@ export interface ItemEquipment {
         damage: string;
         all_stat: string;
         equipment_level_decrease: number;
-      },
+      };
       growth_exp: number;
       growth_level: number;
       scroll_upgrade: string;
@@ -250,7 +252,7 @@ export interface ItemEquipment {
         armor: string;
         speed: string;
         jump: string;
-      },
+      };
       starforce: string;
       starforce_scroll_flag: string;
       item_starforce_option: {
@@ -265,11 +267,11 @@ export interface ItemEquipment {
         armor: string;
         speed: string;
         jump: string;
-      },
+      };
       special_ring_level: number;
       date_expire: string;
     }
-  ],
+  ];
   item_equipment_preset_1: [
     {
       item_equipment_part: string;
@@ -299,7 +301,7 @@ export interface ItemEquipment {
         equipment_level_decrease: number;
         max_hp_rate: string;
         max_mp_rate: string;
-      },
+      };
       item_base_option: {
         str: string;
         dex: string;
@@ -318,7 +320,7 @@ export interface ItemEquipment {
         max_hp_rate: string;
         max_mp_rate: string;
         base_equipment_level: number;
-      },
+      };
       potential_option_grade: string;
       additional_potential_option_grade: string;
       potential_option_1: string;
@@ -338,7 +340,7 @@ export interface ItemEquipment {
         attack_power: string;
         magic_power: string;
         exceptional_upgrade: number;
-      },
+      };
       item_add_option: {
         str: string;
         dex: string;
@@ -355,7 +357,7 @@ export interface ItemEquipment {
         damage: string;
         all_stat: string;
         equipment_level_decrease: number;
-      },
+      };
       growth_exp: number;
       growth_level: number;
       scroll_upgrade: string;
@@ -377,7 +379,7 @@ export interface ItemEquipment {
         armor: string;
         speed: string;
         jump: string;
-      },
+      };
       starforce: string;
       starforce_scroll_flag: string;
       item_starforce_option: {
@@ -392,11 +394,11 @@ export interface ItemEquipment {
         armor: string;
         speed: string;
         jump: string;
-      },
+      };
       special_ring_level: number;
       date_expire: string;
     }
-  ],
+  ];
   item_equipment_preset_2: [
     {
       item_equipment_part: string;
@@ -426,7 +428,7 @@ export interface ItemEquipment {
         equipment_level_decrease: number;
         max_hp_rate: string;
         max_mp_rate: string;
-      },
+      };
       item_base_option: {
         str: string;
         dex: string;
@@ -445,7 +447,7 @@ export interface ItemEquipment {
         max_hp_rate: string;
         max_mp_rate: string;
         base_equipment_level: number;
-      },
+      };
       potential_option_grade: string;
       additional_potential_option_grade: string;
       potential_option_1: string;
@@ -465,7 +467,7 @@ export interface ItemEquipment {
         attack_power: string;
         magic_power: string;
         exceptional_upgrade: number;
-      },
+      };
       item_add_option: {
         str: string;
         dex: string;
@@ -482,7 +484,7 @@ export interface ItemEquipment {
         damage: string;
         all_stat: string;
         equipment_level_decrease: number;
-      },
+      };
       growth_exp: number;
       growth_level: number;
       scroll_upgrade: string;
@@ -504,7 +506,7 @@ export interface ItemEquipment {
         armor: string;
         speed: string;
         jump: string;
-      },
+      };
       starforce: string;
       starforce_scroll_flag: string;
       item_starforce_option: {
@@ -518,12 +520,12 @@ export interface ItemEquipment {
         magic_power: string;
         armor: string;
         speed: string;
-        jump: string
-      },
+        jump: string;
+      };
       special_ring_level: number;
       date_expire: string;
     }
-  ],
+  ];
   item_equipment_preset_3: [
     {
       item_equipment_part: string;
@@ -553,7 +555,7 @@ export interface ItemEquipment {
         equipment_level_decrease: number;
         max_hp_rate: string;
         max_mp_rate: string;
-      },
+      };
       item_base_option: {
         str: string;
         dex: string;
@@ -572,7 +574,7 @@ export interface ItemEquipment {
         max_hp_rate: string;
         max_mp_rate: string;
         base_equipment_level: number;
-      },
+      };
       potential_option_grade: string;
       additional_potential_option_grade: string;
       potential_option_1: string;
@@ -592,7 +594,7 @@ export interface ItemEquipment {
         attack_power: string;
         magic_power: string;
         exceptional_upgrade: number;
-      },
+      };
       item_add_option: {
         str: string;
         dex: string;
@@ -609,7 +611,7 @@ export interface ItemEquipment {
         damage: string;
         all_stat: string;
         equipment_level_decrease: number;
-      },
+      };
       growth_exp: number;
       growth_level: number;
       scroll_upgrade: string;
@@ -630,8 +632,8 @@ export interface ItemEquipment {
         magic_power: string;
         armor: string;
         speed: string;
-        jump: string
-      },
+        jump: string;
+      };
       starforce: string;
       starforce_scroll_flag: string;
       item_starforce_option: {
@@ -645,19 +647,19 @@ export interface ItemEquipment {
         magic_power: string;
         armor: string;
         speed: string;
-        jump: string
-      },
+        jump: string;
+      };
       special_ring_level: number;
       date_expire: string;
     }
-  ],
+  ];
   title: {
     title_name: string;
     title_icon: string;
     title_description: string;
     date_expire: string;
     date_option_expire: string;
-  },
+  };
   dragon_equipment: [
     {
       item_equipment_part: string;
@@ -686,8 +688,8 @@ export interface ItemEquipment {
         damage: string;
         equipment_level_decrease: number;
         max_hp_rate: string;
-        max_mp_rate: string
-      },
+        max_mp_rate: string;
+      };
       item_base_option: {
         str: string;
         dex: string;
@@ -706,7 +708,7 @@ export interface ItemEquipment {
         max_hp_rate: string;
         max_mp_rate: string;
         base_equipment_level: number;
-      },
+      };
       equipment_level_increase: number;
       item_exceptional_option: {
         str: string;
@@ -716,8 +718,8 @@ export interface ItemEquipment {
         max_hp: string;
         max_mp: string;
         attack_power: string;
-        magic_power: string
-      },
+        magic_power: string;
+      };
       item_add_option: {
         str: string;
         dex: string;
@@ -734,7 +736,7 @@ export interface ItemEquipment {
         damage: string;
         all_stat: string;
         equipment_level_decrease: number;
-      },
+      };
       growth_exp: number;
       growth_level: number;
       scroll_upgrade: string;
@@ -755,8 +757,8 @@ export interface ItemEquipment {
         magic_power: string;
         armor: string;
         speed: string;
-        jump: string
-      },
+        jump: string;
+      };
       starforce: string;
       starforce_scroll_flag: string;
       item_starforce_option: {
@@ -770,12 +772,12 @@ export interface ItemEquipment {
         magic_power: string;
         armor: string;
         speed: string;
-        jump: string
-      },
+        jump: string;
+      };
       special_ring_level: number;
       date_expire: string;
     }
-  ],
+  ];
   mechanic_equipment: [
     {
       item_equipment_part: string;
@@ -804,8 +806,8 @@ export interface ItemEquipment {
         damage: string;
         equipment_level_decrease: number;
         max_hp_rate: string;
-        max_mp_rate: string
-      },
+        max_mp_rate: string;
+      };
       item_base_option: {
         str: string;
         dex: string;
@@ -824,7 +826,7 @@ export interface ItemEquipment {
         max_hp_rate: string;
         max_mp_rate: string;
         base_equipment_level: number;
-      },
+      };
       equipment_level_increase: number;
       item_exceptional_option: {
         str: string;
@@ -834,8 +836,8 @@ export interface ItemEquipment {
         max_hp: string;
         max_mp: string;
         attack_power: string;
-        magic_power: string
-      },
+        magic_power: string;
+      };
       item_add_option: {
         str: string;
         dex: string;
@@ -852,7 +854,7 @@ export interface ItemEquipment {
         damage: string;
         all_stat: string;
         equipment_level_decrease: number;
-      },
+      };
       growth_exp: number;
       growth_level: number;
       scroll_upgrade: string;
@@ -873,8 +875,8 @@ export interface ItemEquipment {
         magic_power: string;
         armor: string;
         speed: string;
-        jump: string
-      },
+        jump: string;
+      };
       starforce: string;
       starforce_scroll_flag: string;
       item_starforce_option: {
@@ -889,219 +891,219 @@ export interface ItemEquipment {
         armor: string;
         speed: string;
         jump: string;
-      },
+      };
       special_ring_level: number;
       date_expire: string;
     }
-  ]
+  ];
 }
 
 export interface CashEquipment {
-  date: string
-  character_gender: string
-  character_class: string
-  character_look_mode: string
-  preset_no: number
+  date: string;
+  character_gender: string;
+  character_class: string;
+  character_look_mode: string;
+  preset_no: number;
   cash_item_equipment_base: [
     {
-      cash_item_equipment_part: string
-      cash_item_equipment_slot: string
-      cash_item_name: string
-      cash_item_icon: string
-      cash_item_description: string
+      cash_item_equipment_part: string;
+      cash_item_equipment_slot: string;
+      cash_item_name: string;
+      cash_item_icon: string;
+      cash_item_description: string;
       cash_item_option: [
         {
-          option_type: string
-          option_value: string
+          option_type: string;
+          option_value: string;
         }
-      ],
-      date_expire: string
-      date_option_expire: string
-      cash_item_label: string
+      ];
+      date_expire: string;
+      date_option_expire: string;
+      cash_item_label: string;
       cash_item_coloring_prism: {
-        color_range: string
-        hue: number,
-        saturation: number,
-        value: number
-      },
-      item_gender: string
+        color_range: string;
+        hue: number;
+        saturation: number;
+        value: number;
+      };
+      item_gender: string;
     }
-  ],
+  ];
   cash_item_equipment_preset_1: [
     {
-      cash_item_equipment_part: string
-      cash_item_equipment_slot: string
-      cash_item_name: string
-      cash_item_icon: string
-      cash_item_description: string
+      cash_item_equipment_part: string;
+      cash_item_equipment_slot: string;
+      cash_item_name: string;
+      cash_item_icon: string;
+      cash_item_description: string;
       cash_item_option: [
         {
-          option_type: string
-          option_value: string
+          option_type: string;
+          option_value: string;
         }
-      ],
-      date_expire: string
-      date_option_expire: string
-      cash_item_label: string
+      ];
+      date_expire: string;
+      date_option_expire: string;
+      cash_item_label: string;
       cash_item_coloring_prism: {
-        color_range: string
-        hue: number,
-        saturation: number,
-        value: number
-      },
-      item_gender: string
+        color_range: string;
+        hue: number;
+        saturation: number;
+        value: number;
+      };
+      item_gender: string;
     }
-  ],
+  ];
   cash_item_equipment_preset_2: [
     {
-      cash_item_equipment_part: string
-      cash_item_equipment_slot: string
-      cash_item_name: string
-      cash_item_icon: string
-      cash_item_description: string
+      cash_item_equipment_part: string;
+      cash_item_equipment_slot: string;
+      cash_item_name: string;
+      cash_item_icon: string;
+      cash_item_description: string;
       cash_item_option: [
         {
-          option_type: string
-          option_value: string
+          option_type: string;
+          option_value: string;
         }
-      ],
-      date_expire: string
-      date_option_expire: string
-      cash_item_label: string
+      ];
+      date_expire: string;
+      date_option_expire: string;
+      cash_item_label: string;
       cash_item_coloring_prism: {
-        color_range: string
-        hue: number,
-        saturation: number,
-        value: number
-      },
-      item_gender: string
+        color_range: string;
+        hue: number;
+        saturation: number;
+        value: number;
+      };
+      item_gender: string;
     }
-  ],
+  ];
   cash_item_equipment_preset_3: [
     {
-      cash_item_equipment_part: string
-      cash_item_equipment_slot: string
-      cash_item_name: string
-      cash_item_icon: string
-      cash_item_description: string
+      cash_item_equipment_part: string;
+      cash_item_equipment_slot: string;
+      cash_item_name: string;
+      cash_item_icon: string;
+      cash_item_description: string;
       cash_item_option: [
         {
-          option_type: string
-          option_value: string
+          option_type: string;
+          option_value: string;
         }
-      ],
-      date_expire: string
-      date_option_expire: string
-      cash_item_label: string
+      ];
+      date_expire: string;
+      date_option_expire: string;
+      cash_item_label: string;
       cash_item_coloring_prism: {
-        color_range: string
-        hue: number,
-        saturation: number,
-        value: number
-      },
-      item_gender: string
+        color_range: string;
+        hue: number;
+        saturation: number;
+        value: number;
+      };
+      item_gender: string;
     }
-  ],
+  ];
   additional_cash_item_equipment_base: [
     {
-      cash_item_equipment_part: string
-      cash_item_equipment_slot: string
-      cash_item_name: string
-      cash_item_icon: string
-      cash_item_description: string
+      cash_item_equipment_part: string;
+      cash_item_equipment_slot: string;
+      cash_item_name: string;
+      cash_item_icon: string;
+      cash_item_description: string;
       cash_item_option: [
         {
-          option_type: string
-          option_value: string
+          option_type: string;
+          option_value: string;
         }
-      ],
-      date_expire: string
-      date_option_expire: string
-      cash_item_label: string
+      ];
+      date_expire: string;
+      date_option_expire: string;
+      cash_item_label: string;
       cash_item_coloring_prism: {
-        color_range: string
-        hue: number,
-        saturation: number,
-        value: number
-      },
-      item_gender: string
+        color_range: string;
+        hue: number;
+        saturation: number;
+        value: number;
+      };
+      item_gender: string;
     }
-  ],
+  ];
   additional_cash_item_equipment_preset_1: [
     {
-      cash_item_equipment_part: string
-      cash_item_equipment_slot: string
-      cash_item_name: string
-      cash_item_icon: string
-      cash_item_description: string
+      cash_item_equipment_part: string;
+      cash_item_equipment_slot: string;
+      cash_item_name: string;
+      cash_item_icon: string;
+      cash_item_description: string;
       cash_item_option: [
         {
-          option_type: string
-          option_value: string
+          option_type: string;
+          option_value: string;
         }
-      ],
-      date_expire: string
-      date_option_expire: string
-      cash_item_label: string
+      ];
+      date_expire: string;
+      date_option_expire: string;
+      cash_item_label: string;
       cash_item_coloring_prism: {
-        color_range: string
-        hue: number,
-        saturation: number,
-        value: number
-      },
-      item_gender: string
+        color_range: string;
+        hue: number;
+        saturation: number;
+        value: number;
+      };
+      item_gender: string;
     }
-  ],
+  ];
   additional_cash_item_equipment_preset_2: [
     {
-      cash_item_equipment_part: string
-      cash_item_equipment_slot: string
-      cash_item_name: string
-      cash_item_icon: string
-      cash_item_description: string
+      cash_item_equipment_part: string;
+      cash_item_equipment_slot: string;
+      cash_item_name: string;
+      cash_item_icon: string;
+      cash_item_description: string;
       cash_item_option: [
         {
-          option_type: string
-          option_value: string
+          option_type: string;
+          option_value: string;
         }
-      ],
-      date_expire: string
-      date_option_expire: string
-      cash_item_label: string
+      ];
+      date_expire: string;
+      date_option_expire: string;
+      cash_item_label: string;
       cash_item_coloring_prism: {
-        color_range: string
-        hue: number,
-        saturation: number,
-        value: number
-      },
-      item_gender: string
+        color_range: string;
+        hue: number;
+        saturation: number;
+        value: number;
+      };
+      item_gender: string;
     }
-  ],
+  ];
   additional_cash_item_equipment_preset_3: [
     {
-      cash_item_equipment_part: string
-      cash_item_equipment_slot: string
-      cash_item_name: string
-      cash_item_icon: string
-      cash_item_description: string
+      cash_item_equipment_part: string;
+      cash_item_equipment_slot: string;
+      cash_item_name: string;
+      cash_item_icon: string;
+      cash_item_description: string;
       cash_item_option: [
         {
-          option_type: string
-          option_value: string
+          option_type: string;
+          option_value: string;
         }
-      ],
-      date_expire: string
-      date_option_expire: string
-      cash_item_label: string
+      ];
+      date_expire: string;
+      date_option_expire: string;
+      cash_item_label: string;
       cash_item_coloring_prism: {
-        color_range: string
-        hue: number,
-        saturation: number,
-        value: number
-      },
-      item_gender: string
+        color_range: string;
+        hue: number;
+        saturation: number;
+        value: number;
+      };
+      item_gender: string;
     }
-  ]
+  ];
 }
 
 export interface SkiiInfo {
@@ -1117,7 +1119,7 @@ export interface SkiiInfo {
       skill_effect_next: string;
       skill_icon: string;
     }
-  ]
+  ];
 }
 
 export interface SymbolInfo {
@@ -1141,9 +1143,8 @@ export interface SymbolInfo {
       symbol_growth_count: number;
       symbol_require_growth_count: number;
     }
-  ]
+  ];
 }
-
 
 export interface Ocid {
   ocid: string;
