@@ -1,34 +1,33 @@
-import { Link } from "react-router-dom";
 import {
   formatDateToKorean,
   getTodayDate,
 } from "../../utils/getTodayDate.utils";
-import "./total.scss";
 import useRanking from "../../hook/useRanking";
-import { OverallRanking } from "../../types/ranking.types";
+import { UnionRanking } from "../../types/ranking.types";
+import { Link } from "react-router-dom";
 
 const todayDate = getTodayDate();
 
-const Total = () => {
-  const { rankingData, ocidData, characterData } = useRanking("overall", 10);
+const Union = () => {
+  const { rankingData, ocidData, characterData } = useRanking("union", 10);
 
-  const overallRanking = rankingData as OverallRanking[];
-
+  const unionRanking = rankingData as UnionRanking[];
   return (
     <div className="wrap-inner">
       <div className="list-box">
         <h2 className="list-tit">
           <strong>{formatDateToKorean(todayDate)}</strong> 랭킹
         </h2>
-        {overallRanking ? (
-          <ul className="ranking-grid">
+        {unionRanking ? (
+          <ul className="ranking-grid grid-5">
             <li className="ranking-grid-head">
               <p>#</p>
               <div>캐릭터</div>
-              <p>인기도</p>
+              <p>레벨</p>
+              <p>전투력</p>
               <p>길드</p>
             </li>
-            {overallRanking.map((character) => (
+            {unionRanking.map((character) => (
               <li key={character.ranking}>
                 <p>{character.ranking}</p>
                 <div className="char-info">
@@ -52,16 +51,17 @@ const Total = () => {
                       </Link>
                     </span>
                     <span className="level-word">
-                      Lv.{character.character_level} | {character.world_name}
+                      Lv.
+                      {characterData[character.character_name]
+                        ?.character_level ?? "-"}
+                      | {character.world_name}
                     </span>
                   </p>
                 </div>
-                <p className="char-popular">
-                  {character.character_popularity ?? "데이터 없음"}
-                </p>
+                <p className="char-level">{character.union_level}</p>
+                <p className="char-power">{character.union_power}</p>
                 <p className="char-guild">
-                  {characterData[character.character_name]?.data?.guildName ??
-                    "-"}
+                  {characterData[character.character_name]?.guildName ?? "-"}
                 </p>
               </li>
             ))}
@@ -74,4 +74,4 @@ const Total = () => {
   );
 };
 
-export default Total;
+export default Union;

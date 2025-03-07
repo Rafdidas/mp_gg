@@ -4,6 +4,7 @@ import {
   Ocid,
   OverallRanking,
   OverallRankTop,
+  UnionRanking,
 } from "../types/ranking.types";
 import { getTodayDate } from "../utils/getTodayDate.utils";
 import { useQueries, useQuery } from "@tanstack/react-query";
@@ -15,17 +16,25 @@ const todayDate = getTodayDate();
 interface CharacterData {
   data: OverallRankTop | null;
   guildName: string | null;
+  character_level: number | null;
 }
 
-const useRanking = (rankingType: "dojang" | "overall", limit: number) => {
+const useRanking = (
+  rankingType: "dojang" | "overall" | "union",
+  limit: number
+) => {
   // ✅ 랭킹 API URL 설정
   const rankingUrl =
     rankingType === "dojang"
       ? `${process.env.REACT_APP_BASE_URL}/ranking/dojang?date=${todayDate}&difficulty=1&page=1`
+      : rankingType === "union"
+      ? `${process.env.REACT_APP_BASE_URL}/ranking/union?date=${todayDate}&page=1`
       : `${process.env.REACT_APP_BASE_URL}/ranking/overall?date=${todayDate}`;
 
   // ✅ Step 1: 랭킹 데이터 가져오기
-  const { data: rankingData } = useQuery<DojangRanking[] | OverallRanking[]>({
+  const { data: rankingData } = useQuery<
+    DojangRanking[] | OverallRanking[] | UnionRanking[]
+  >({
     queryKey: ["ranking", rankingType],
     queryFn: () => fetchRankingData(rankingUrl, limit),
     staleTime: 1000 * 60 * 10,
@@ -93,6 +102,7 @@ const useRanking = (rankingType: "dojang" | "overall", limit: number) => {
         characterMap[name] = {
           data: characterData,
           guildName: characterData.character_guild_name || null,
+          character_level: characterData.character_level || null,
         };
       }
     });
